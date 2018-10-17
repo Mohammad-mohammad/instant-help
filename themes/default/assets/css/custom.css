@@ -1,0 +1,119 @@
+#main-footer .row-wrap>:nth-child(2){
+	font-size: 20px;
+    padding: 10px 0px 0px 100px;
+    letter-spacing: 3px;
+    line-height: 22px;
+}
+#main-footer .row-wrap>:nth-child(1) .mb20 {
+    font-size: 16px;
+}
+.feature-content{
+	padding-top: 7px;
+}
+.item-type{
+	text-align: center;
+    margin-top: 14px;
+    font-weight: bold;
+    border: 1px dashed;
+    padding: 3px;
+}
+.red-color{
+	color:red!important;
+}
+.green-color{
+	color:green!important;
+}
+#team {
+background-color: #333333;
+opacity:0.9;
+padding: 60px 0;
+text-align: center;
+background-size: cover;
+}
+#team h2 {
+color: #fff;
+}
+#team p {
+color: #fff;
+line-height: 25px;
+}
+#team h5 {
+padding-top: 10px;
+color: #fff;
+font-weight:bold;
+}
+#team p.large {
+margin-top: 60px;
+margin-bottom: 30px;
+}
+#team .fa {
+width: 30px;
+height: 30px;
+margin: 0 3px;
+border-radius: 100%;
+font-size: 15px;
+line-height: 30px;
+outline: 0;
+color: #fff;
+background-color: #ed8323;
+-webkit-transition: all .3s;
+-moz-transition: all .3s;
+transition: all .3s;
+}
+#team .fa:hover {
+
+
+
+}
+.teamborder {
+border: 1px solid lightgray;
+padding: 20px;
+}
+
+.teamborder img{
+	width:40%;
+}
+hr {
+display: block;
+height: 3px;
+border: 0;
+margin: 3em 0;
+padding: 0;
+background-image: linear-gradient(left, #fff, #e6e6e6, #fff);
+background-image: -webkit-linear-gradient(left, #fff, #e6e6e6, #fff);
+background-image: -moz-linear-gradient(left, #fff, #e6e6e6, #fff);
+background-image: -o-linear-gradient(left, #fff, #e6e6e6, #fff);
+width: 50%;
+left: 25%;
+position: relative;
+border: none;
+}
+#team hr {
+display: block;
+height: 3px;
+border: 0;
+margin: 3em 0;
+padding: 0;
+background-image: linear-gradient(left, rgba(255, 255, 255, 0), #ed8323, rgba(255, 255, 255, 0));
+background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0), #ed8323, rgba(255, 255, 255, 0));
+background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 0), #ed8323, rgba(255, 255, 255, 0));
+background-image: -o-linear-gradient(left, rgba(255, 255, 255, 0), #ed8323, rgba(255, 255, 255, 0));
+width: 50%;
+left: 25%;
+position: relative;
+border: none;
+}
+
+.team-md {
+box-shadow: inset 0px 0px 22px 2px #e3d1d1;
+transition: .2s ease-out;
+}  
+
+
+
+
+
+
+.tagline {
+margin-top: 200px!important;
+}
