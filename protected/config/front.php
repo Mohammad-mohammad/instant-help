@@ -29,6 +29,7 @@ return CMap::mergeArray(
                     '/api/profile'=>array('api/profile', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
                     '/api/calls-history'=>array('api/calls_history', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
                     '/api/languages'=>array('api/languages', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
+                    '/api/competences'=>array('api/competences', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
 
                     '/api/setting-update'=>array('api/Setting_update', 'urlSuffix' => '/', 'verb'=>'PUT', 'caseSensitive' => false),
                     '/api/delete-call'=>array('api/Delete_call', 'urlSuffix' => '/', 'verb'=>'DELETE', 'caseSensitive' => false),
