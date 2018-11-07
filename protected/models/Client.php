@@ -81,6 +81,7 @@ class Client extends CActiveRecord
 
 	public function getSearchAttribute(){
 	    $result = array_filter($this->attributes);
+	    $result['photo']=$this->get_photo();
 	    $result['full_address'] = $this->getFull_address();
 	    $result['rating']= $this->getRating();
 	    $result['clientType']= Helpers::clientType($this->clientType);
@@ -91,25 +92,63 @@ class Client extends CActiveRecord
     }
     public function getCompetences(){
 	    $criteria= new CDbCriteria();
-	    $criteria->select="t.name";
+	    $criteria->select="chc.id, t.name";
 	    $criteria->join='LEFT JOIN competence_has_client chc ON chc.competence_id=t.id';
 	    $criteria->addCondition('chc.client_id='.$this->id);
 	    $models= Competence::model()->findAll($criteria);
 	    $result=array();
         foreach ($models as $model){
-            $result[]=$model->name;
+            $result[]=array("name"=>$model->name, "id"=>$model->id);
         }
 	    return $result;
     }
+    public function getAvailableCompetences(){
+        $criteria= new CDbCriteria();
+        $criteria->select="t.id";
+        $criteria->join='LEFT JOIN competence_has_client chc ON chc.competence_id=t.id';
+        $criteria->addCondition('chc.client_id='.$this->id);
+        $models= Competence::model()->findAll($criteria);
+        $unWantedIds=array();
+        foreach ($models as $model){
+            $unWantedIds[]=$model->id;
+        }
+        $newCriteria= new CDbCriteria();
+        $newCriteria->addNotInCondition('id',$unWantedIds);
+        $models= Competence::model()->findAll($newCriteria);
+        $result=array();
+        foreach ($models as $model){
+            $result[]=array("name"=>$model->name, "id"=>$model->id);
+        }
+        return $result;
+    }
     public function getLanguages(){
         $criteria= new CDbCriteria();
-        $criteria->select="t.name";
+        $criteria->select="lhc.id, t.name";
         $criteria->join='LEFT JOIN language_has_client lhc ON lhc.language_id=t.id';
         $criteria->addCondition('lhc.client_id='.$this->id);
         $models= Language::model()->findAll($criteria);
         $result=array();
         foreach ($models as $model){
-            $result[]=$model->name;
+            $result[]=array("name"=>$model->name, "id"=>$model->id);
+        }
+        return $result;
+    }
+    public function getAvailableLanguage(){
+        $criteria= new CDbCriteria();
+        $criteria->select="t.id";
+        $criteria->join='LEFT JOIN language_has_client lhc ON lhc.language_id=t.id';
+        $criteria->addCondition('lhc.client_id='.$this->id);
+        $models= Language::model()->findAll($criteria);
+        $unWantedIds=array();
+        foreach ($models as $model){
+            $unWantedIds[]=$model->id;
+        }
+        $newCriteria= new CDbCriteria();
+        $newCriteria->addNotInCondition('id',$unWantedIds);
+        $models= Language::model()->findAll($newCriteria);
+        $result=array();
+        foreach ($models as $model){
+            $result[]=array("name"=>$model->name, "id"=>$model->id);
         }
         return $result;
     }
@@ -220,11 +259,18 @@ class Client extends CActiveRecord
 
 
     public function get_photo() {
-        return Yii::app()->baseUrl . "/upload/" . $this->photo;
+        if($this->photo==null) {
+            return Yii::app()->baseUrl . "/upload/default.png";
+        }else
+            return Yii::app()->baseUrl . "/upload/" . $this->photo;
+
     }
 
     public function getAbsolutephoto(){
-        return Yii::getpathOfAlias('webroot')."/upload/".$this->photo;
+	    if($this->photo==null){
+            return Yii::getpathOfAlias('webroot')."/upload/default.png";
+        }else
+            return Yii::getpathOfAlias('webroot')."/upload/".$this->photo;
     }
 
     public function afterDelete() {
