@@ -91,6 +91,14 @@ Yii::app()->clientScript->registerScript('loading',$tt,  CClientScript::POS_END)
     </div>
 
 	<div class="form-group">
+        <?php echo $form->labelEx($model, 'status',array('class'=>'control-label col-md-2 col-sm-2 col-xs-12')); ?>
+        <div class="col-md-10 col-sm-10 col-xs-12">
+			<?php echo $form->textField($model,'status',array('class' => 'form-control' ,'maxlength'=>11)); ?>
+			<?php echo $form->error($model, 'status'); ?>
+		</div>
+    </div>
+
+	<div class="form-group">
         <?php echo $form->labelEx($model, 'sender',array('class'=>'control-label col-md-2 col-sm-2 col-xs-12')); ?>
         <div class="col-md-10 col-sm-10 col-xs-12">
 		<?php echo $form->dropDownList($model, 'sender', CHtml::listData(Client::model()->findAll(), 'id', 'email'), array('class' => 'form-control')); ?>

@@ -35,6 +35,7 @@ $this->breadcrumbs=array(
 				'strat',
 				'end',
 	'amount',
+	'status',
 				array(
                     'name' => 'sender',
                     'value' => $model->sender0->email,

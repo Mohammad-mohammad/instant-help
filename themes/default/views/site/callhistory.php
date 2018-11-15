@@ -12,17 +12,18 @@
                 <thead>
                 <tr>
                     <th>Out/In Call</th>
+                    <th>Sender</th>
                     <th>Receiver</th>
                     <th>Type</th>
                     <th>Start Date</th>
                     <th>End Date</th>
-                    <th>Cost</th>
-                    <th>Another Field</th>
-                    <th>Delete</th>
+                    <th>Rating(of 5)</th>
+                    <?php /*<th>Another Field</th>
+                    <th>Delete</th>*/ ?>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
+                <tbody id="call-history-table">
+                <?php /*<tr>
                     <td class="booking-history-type"><i class="fa fa-level-down red-color"></i><small class="red-color">Incoming</small>
                     </td>
                     <td class="booking-history-title">fname1 lname1</td>
@@ -34,21 +35,7 @@
                     </td>
                     <td class="text-center"><a class="btn btn-default btn-sm" href="#">Delete</a>
                     </td>
-                </tr>
-                <tr>
-                    <td class="booking-history-type"><i class="fa fa-level-up green-color"></i><small class="green-color">Out-coming</small>
-                    </td>
-                    <td class="booking-history-title">fname2 lname2</td>
-                    <td>Video</td>
-                    <td>4/12/2014</td>
-                    <td>4/25/2014 <i class="fa fa-long-arrow-right"></i> 4/30/2014</td>
-                    <td>$1200</td>
-                    <td class="text-center"><i class="fa fa-times"></i>
-                    </td>
-                    <td class="text-center"><a class="btn btn-default btn-sm" href="#">Delete</a>
-                    </td>
-                </tr>
-
+                </tr>*/ ?>
                 </tbody>
             </table>
         </div>

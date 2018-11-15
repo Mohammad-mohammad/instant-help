@@ -70,6 +70,10 @@
 			<?php echo $form->textField($model,'amount',array('class' => 'form-control' )); ?>
 		</div>
         <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+            <?php echo $form->label($model, 'status'); ?>
+			<?php echo $form->textField($model,'status',array('class' => 'form-control' ,'maxlength'=>11)); ?>
+		</div>
+        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
             <?php echo $form->label($model, 'sender'); ?>
 		<?php echo $form->dropDownList($model, 'sender', CHtml::listData(Client::model()->findAll(), 'id', 'email'), array('class' => 'form-control')); ?>
 		</div>

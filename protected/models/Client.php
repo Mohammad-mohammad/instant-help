@@ -83,7 +83,7 @@ class Client extends CActiveRecord
 	    $result = array_filter($this->attributes);
 	    $result['photo']=$this->get_photo();
 	    $result['full_address'] = $this->getFull_address();
-	    $result['rating']= $this->getRating();
+	    $result['rating']= round($this->getRating());
 	    $result['clientType']= Helpers::clientType($this->clientType);
 	    $result['competences']=$this->getCompetences();
 	    $result['languages']=$this->getLanguages();

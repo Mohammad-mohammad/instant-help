@@ -120,6 +120,10 @@ array(
                         'name' => 'amount',
                         'headerHtmlOptions' => array('style' => 'width: 60px'),
                     ),
+array(
+                        'name' => 'status',
+                        'headerHtmlOptions' => array('style' => 'width: 60px'),
+                    ),
 					array(
 			        'name'=>'sender',
 			        'value'=>'($data->sender0->email)',

@@ -25,7 +25,6 @@ class ApiController extends Controller
             $model->email = $_POST['email'];
             $model->password= $_POST['password'];
             if ($model->validate()&& $model->login()){
-                //make available field 1
                 $this->_sendResponse(200, sprintf('You logged in successfully.'));
             }else {
                 $this->_sendResponse(401, sprintf('Error: Email or Password is invalid.'));
@@ -33,6 +32,169 @@ class ApiController extends Controller
         }
         Yii::app()->end();
     }
+
+    public function actionChange_availability()
+    {
+        if(Yii::app()->user->isGuest)
+            $this->_sendResponse(401, 'Error: You are not logged in.' );
+
+        if(!(isset($_POST['status'])))
+        {
+            $this->_sendResponse(401, sprintf('Error: try later.'));
+
+        }else{
+            $id=Yii::app()->user->id;
+            $criteria= new CDbCriteria();
+            $criteria->select="email, available";
+            $criteria->condition="id={$id}";
+            $model = Client::model()->find($criteria);
+
+            if(is_null($model))
+                $this->_sendResponse(404, 'No Item found.');
+            else{
+                $result=array();
+                $user=Client::model()->findByPk($id);
+                $result['oldStatus']=$user->available;
+                $user->available=($model->available==0?1:0);
+                if($user->saveAttributes(array('available'))){
+                    $result['change']="ok";
+                }else{
+                    $result['change']="field";
+                }
+                $result['email']=$model->email;
+                $result['status']=$user->available;
+                $this->_sendResponse(200, CJSON::encode($result));
+            }
+        }
+    }
+
+    public function actionGet_calls(){
+        if(Yii::app()->user->isGuest)
+            $this->_sendResponse(401, 'Error: You are not logged in.' );
+
+        $criteria=new CDbCriteria();
+        $id=Yii::app()->user->id;
+        $callStatus=CallStatus::NotHandled;
+        $criteria->addCondition("receiver=$id");
+        $criteria->addCondition("status=$callStatus");
+        $criteria->addCondition("strat >= DATE_SUB(NOW(),INTERVAL 2 MINUTE)");
+        $criteria->order='strat';
+        $model= Calling::model()->find($criteria);
+        if($model!=null){
+            $sender=Client::model()->findByPk($model->sender);
+            $model->sender=$sender->fname." ".$sender->lname;
+            $model->type=$sender->get_photo();
+            $this->_sendResponse(200, CJSON::encode($model));
+        }else{
+            $this->_sendResponse(200, null );
+        }
+    }
+
+    public function actionReject_call(){
+        if(Yii::app()->user->isGuest)
+            $this->_sendResponse(401, 'Error: You are not logged in.' );
+
+        if(!isset($_POST['id'])){
+            $this->_sendResponse(401, 'Error: missing call id!' );
+        }else{
+            $model=Calling::model()->findByPk($_POST['id']);
+            $model->status=CallStatus::Rejected;
+            if($model->save())
+                $this->_sendResponse(200, CJSON::encode("call rejected"));
+            else{
+                $this->_sendResponse(401, 'Error: Rejecting the call!' );
+            }
+        }
+    }
+
+    public function actionAnswer_call(){
+        if(Yii::app()->user->isGuest)
+            $this->_sendResponse(401, 'Error: You are not logged in.' );
+
+        if(!isset($_POST['id'])){
+            $this->_sendResponse(401, 'Error: missing call id!' );
+        }else{
+            $model=Calling::model()->findByPk($_POST['id']);
+            $model->status=CallStatus::Running;
+            if($model->save()) {
+                $result=array();
+                $result['email']=Yii::app()->user->name;
+                $result['result']="call Answered";
+                $this->_sendResponse(200, CJSON::encode($result));
+            }else{
+                $this->_sendResponse(401, 'Error: answering the call!' );
+            }
+        }
+    }
+
+    public function actionMake_call(){
+        if(Yii::app()->user->isGuest)
+            $this->_sendResponse(401, 'Error: You are not logged in.' );
+
+        if(!isset($_POST['id'])){
+            $this->_sendResponse(401, 'Error: missing call id!' );
+        }else{
+            $model= new Calling();
+            $model->sender=Yii::app()->user->id;
+            $model->receiver=$_POST['id'];
+            $model->type='video';
+            $model->status=CallStatus::NotHandled;
+            $model->strat=date("Y-m-d H:i:s");
+            $model->amount=0;
+            if($model->save())
+                $this->_sendResponse(200, CJSON::encode($model));
+            else{
+                $this->_sendResponse(401, 'Error: sending the call!' );
+            }
+        }
+    }
+
+    public function actionCall_rating(){
+        if(Yii::app()->user->isGuest)
+            $this->_sendResponse(401, 'Error: You are not logged in.' );
+
+        if(!(isset($_POST['id'])&& isset($_POST['rate']))){
+            $this->_sendResponse(401, 'Error: missing call values!' );
+        }else{
+            $model=Calling::model()->findByPk($_POST['id']);
+            $model->status=CallStatus::Accepted;
+            $model->end=date("Y-m-d H:i:s");
+            $model->amount=$_POST['rate'];
+            if($model->save()) {
+                $this->_sendResponse(200, CJSON::encode("success"));
+            }else{
+                $this->_sendResponse(401, 'Error: answering the call!' );
+            }
+        }
+    }
+
+    public function actionGet_response_call(){
+        if(Yii::app()->user->isGuest)
+            $this->_sendResponse(401, 'Error: You are not logged in.' );
+
+        if(!isset($_POST['id'])){
+            $this->_sendResponse(401, 'Error: missing call id!' );
+        }else{
+            $model=Calling::model()->findByPk($_POST['id']);
+            if($model!=null){
+                $this->_sendResponse(200, CJSON::encode($model));
+            }else{
+                $this->_sendResponse(401, 'Error: sending the call!' );
+            }
+        }
+    }
+
+
+
+    public function actionGet_email()
+    {
+        if(Yii::app()->user->isGuest)
+            $this->_sendResponse(401, 'Error: You are not logged in.' );
+
+        $this->_sendResponse(200, CJSON::encode(Yii::app()->user->name));
+    }
+
+
 
     public function actionLogout()
     {
@@ -100,6 +262,7 @@ class ApiController extends Controller
 
         $criteria->select='t.id, t.fname, t.lname, t.email, t.photo, clientType';
 
+        $criteria->addCondition('id!='.Yii::app()->user->id);
 
         (isset($_GET['city'])&&$_GET['city']!=="undefined"&&$_GET['city']!=="")?
             $criteria->addSearchCondition('city', $_GET['city']):'';
@@ -130,7 +293,7 @@ class ApiController extends Controller
         $models = Client::model()->findAll($criteria);
 
         if(empty($models)) {
-            $this->_sendResponse(200, sprintf('No items where found for this search.') );
+            $this->_sendResponse(200, sprintf('No users were found for this search.') );
         } else {
             $rows = array();
             foreach($models as $model){
@@ -169,6 +332,7 @@ class ApiController extends Controller
         $model = Client::model()->findByPk(Yii::app()->user->id);
         $criteria=new CDbCriteria();
         $criteria->condition="sender="+$model->id+" or receiver="+$model->id;
+        $criteria->order='strat DESC';
         $calls = Calling::model()->findAll($criteria);
 
         if(is_null($calls))

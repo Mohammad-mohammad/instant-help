@@ -29,7 +29,8 @@ return CMap::mergeArray(
                     '/api/profile'=>array('api/profile', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
                     '/api/calls-history'=>array('api/calls_history', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
                     '/api/languages'=>array('api/languages', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
-                    '/api/competences'=>array('api/competences', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
+					'/api/competences'=>array('api/competences', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
+					'/api/upload-image-profile'=>array('api/profile_image_upload', 'urlSuffix' => '/', 'verb'=>'POST', 'caseSensitive' => false),
 
                     '/api/setting-update'=>array('api/Setting_update', 'urlSuffix' => '/', 'verb'=>'PUT', 'caseSensitive' => false),
                     '/api/delete-call'=>array('api/Delete_call', 'urlSuffix' => '/', 'verb'=>'DELETE', 'caseSensitive' => false),
@@ -38,10 +39,14 @@ return CMap::mergeArray(
                     '/api/add-competence'=>array('api/Add_competence', 'urlSuffix' => '/', 'verb'=>'POST', 'caseSensitive' => false),
                     '/api/delete-competence'=>array('api/Delete_competence', 'urlSuffix' => '/', 'verb'=>'DELETE', 'caseSensitive' => false),
 
-
-
-
-
+                    '/api/change-availability'=>array('api/Change_availability', 'urlSuffix' => '/', 'verb'=>'POST', 'caseSensitive' => false),
+                    '/api/get-email'=>array('api/Get_email', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
+                    '/api/get-calls'=>array('api/Get_calls', 'urlSuffix' => '/', 'verb'=>'GET', 'caseSensitive' => false),
+                    '/api/reject-call'=>array('api/Reject_call', 'urlSuffix' => '/', 'verb'=>'POST', 'caseSensitive' => false),
+                    '/api/answer-call'=>array('api/Answer_call', 'urlSuffix' => '/', 'verb'=>'POST', 'caseSensitive' => false),
+                    '/api/make-call'=>array('api/Make_call', 'urlSuffix' => '/', 'verb'=>'POST', 'caseSensitive' => false),
+                    '/api/get-response-call'=>array('api/get_response_call', 'urlSuffix' => '/', 'verb'=>'POST', 'caseSensitive' => false),
+                    '/api/call-rating'=>array('api/call_rating', 'urlSuffix' => '/', 'verb'=>'POST', 'caseSensitive' => false),
 
 
                     '<controller:\w+>/<id:\d+>' => '<controller>/view',

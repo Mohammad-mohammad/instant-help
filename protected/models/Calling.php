@@ -9,6 +9,7 @@
  * @property string $strat
  * @property string $end
  * @property double $amount
+ * @property integer $status
  * @property integer $sender
  * @property integer $receiver
  *
@@ -35,13 +36,13 @@ class Calling extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('type, strat, sender, receiver', 'required'),
-			array('sender, receiver', 'numerical', 'integerOnly'=>true),
+			array('status, sender, receiver', 'numerical', 'integerOnly'=>true),
 			array('amount', 'numerical'),
 			array('type', 'length', 'max'=>5),
 			array('end', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, type, strat, end, amount, sender, receiver', 'safe', 'on'=>'search'),
+			array('id, type, strat, end, amount, status, sender, receiver', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +70,7 @@ class Calling extends CActiveRecord
 			'strat' => Yii::t('tx', 'Strat'),
 			'end' => Yii::t('tx', 'End'),
 			'amount' => Yii::t('tx', 'Amount'),
+            'status' => Yii::t('tx', 'Status'),
 			'sender' => Yii::t('tx', 'Sender'),
 			'receiver' => Yii::t('tx', 'Receiver'),
 		);
@@ -97,6 +99,7 @@ class Calling extends CActiveRecord
 		$criteria->compare('strat',$this->strat,true);
 		$criteria->compare('end',$this->end,true);
 		$criteria->compare('amount',$this->amount);
+        $criteria->compare('status',$this->status);
 		$criteria->compare('sender',$this->sender);
 		$criteria->compare('receiver',$this->receiver);
 

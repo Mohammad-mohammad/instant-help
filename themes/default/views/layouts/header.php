@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
+<?php if(!Yii::app()->user->isGuest){
+    $user_model=Client::model()->findByAttributes(array('email'=>Yii::app()->user->name));
+} ?>
 <html>
-
 <head>
     <title>Instant Help - <?php echo CHtml::encode($this->pageTitle); ?></title>
-
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta name="keywords" content="Instant Help"/>
@@ -21,7 +22,7 @@
     <link rel="stylesheet" href="<?php echo $p; ?>css/icomoon.css">
     <link rel="stylesheet" href="<?php echo $p; ?>css/styles.css">
     <link rel="stylesheet" href="<?php echo $p; ?>css/custom.css">
-    <link rel="stylesheet" href="<?php echo $p; ?>css/mystyles.css">
+<!--    <link rel="stylesheet" href="--><?php //echo $p; ?><!--css/mystyles.css">-->
     <script src="<?php echo $p; ?>js/modernizr.js"></script>
 
 
@@ -42,15 +43,18 @@
                     <div class="col-md-9">
                         <div class="top-user-area clearfix">
                             <ul class="top-user-area-list list list-horizontal list-border">
+                                <?php if(!Yii::app()->user->isGuest){ ?>
                                 <li class="top-user-area-avatar">
-                                    <a href="user-profile.html">
-                                        <img class="origin round" src="<?php echo $p; ?>img/40x40.png" alt="Image Alternative text"
-                                             title="AMaze"/>Hi, John</a>
+                                    <a href="<?php echo Yii::app()->createUrl("site/profile"); ?>">
+                                        <img id="login-image" class="origin round" src="<?php echo $user_model->_photo; ?>" alt="avatar"
+                                             />Hi, <?php echo $user_model->fname; ?></a>
+                                    <input id="logged-email" type="hidden" value="<?php echo $user_model->email; ?>">
                                 </li>
-                                <li><a href="#">Sign Out</a>
-                                <li><a href="<?php echo Yii::app()->createUrl("site/sign"); ?>">Login</a>
-                                <li><a href="<?php echo Yii::app()->createUrl("site/sign"); ?>">Register</a>
-                                </li>
+                                <li><a href="#" id="logout-btn">Sign Out</a></li>
+                                <?php }else{ ?>
+                                <li><a href="<?php echo Yii::app()->createUrl("site/sign"); ?>">Login</a></li>
+                                <li><a href="<?php echo Yii::app()->createUrl("site/sign"); ?>">Register</a></li>
+                                <?php } ?>
                                 <li class="nav-drop"><a href="#">USD $<i class="fa fa-angle-down"></i><i
                                                 class="fa fa-angle-up"></i></a>
                                     <ul class="list nav-drop-menu">

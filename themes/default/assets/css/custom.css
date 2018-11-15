@@ -1,3 +1,161 @@
+.rating-form {
+    display: none;
+    width: 100%;
+    padding: 25px;
+    margin: auto;
+    text-align: center;
+    background: #33332eba;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 10000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding-top: 10%;
+}
+.rating-panel {
+    width: 35%;
+    margin: auto;
+    background-color: #dddddd;
+    padding: 25px;
+    border-radius: 4px;
+}
+.rating-panel>h4 {
+    color: #ed8323!important;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+select#rating-input {
+    width: 47%;
+    color: #ed8323!important;
+    background-color: #dddddd!important;
+    margin: auto;
+    height: 34px;
+    margin-bottom: 20px;
+    border-color: #ed8323!important;
+}
+div#inCall {
+    padding: 5px;
+    display: none;
+    background-color: #333333c7;
+}
+div#inCall> button {
+    background-color: #ed8323;
+    color: #fff;
+    border: none;
+    margin: 0px 5px;
+    padding: 3px 13px;
+}
+#calling-panel{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    color: #fff;
+    border: none;
+    width: 18%;
+    background-color: #33332eba;
+    z-index: 1000;
+    padding: 8px 8px 15px 8px;
+    text-align: center;
+}
+#calling-panel>div{
+    width: 100%;
+    float: left;
+}
+#calling-panel>div>img {
+    width: 75px;
+    border-radius: 51%;
+    border: 1px solid #fff;
+    height: 75px;
+}
+#answer-call{
+    color: white;
+    background-color: green;
+    float: left;
+}
+#reject-call{
+    color: white;
+    background-color: red;
+    float: right;
+}
+.btn-round {
+    border-radius: 28%;
+    border: 1px solid #fff;
+    padding: 10px;
+    width: 37%;
+}
+#vid-box{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin:20px;
+    color: #ed8323;
+    border: solid 2px rgba(201, 202, 202, 0.28);
+    z-index: 10000;
+}
+#vid-thumb > video{
+    width: 400px!important;
+}
+#vid-thumb{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin:20px;
+    color: #ed8323;
+    border: solid 2px rgba(201, 202, 202, 0.28);
+}
+#vid-thumb > video{
+    width: 200px!important;
+}
+.sme_profile_image {
+    display: none!important;
+}
+.profile_img{
+    width: 120px!important;
+    height: 120px!important;
+}
+label.custom-file-upload i, label.custom-file-upload2 i {
+    color: #ed8323;
+    font-size: 15px;
+}
+.custom-file-upload {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    /* top: 15px; */
+    float: right;
+    background: rgba(255, 255, 255, 0);
+    /* padding: 11px 8px 6px 10px; */
+}
+.btn_show{
+    display: inline-block!important;
+}
+.empty-star{
+    color: #c6c6c6!important;
+}
+.booking-item-features > li > i{
+    height: 25px!important;
+    width: 25px!important;
+    text-align: center!important;
+    line-height: 23px!important;
+    font-size: 15px!important;
+}
+.booking-item-features-rentals{
+    float: left;
+    width: 100%;
+    font-size: 12px;
+}
+.booking-item-features-sign > li {
+    padding-bottom: 0px!important;
+}
+.feature-content{
+    padding-top: 0px!important;
+}
+.booking-title{
+    text-align: center;
+}
 #main-footer .row-wrap>:nth-child(2){
 	font-size: 20px;
     padding: 10px 0px 0px 100px;
@@ -116,4 +274,36 @@ transition: .2s ease-out;
 
 .tagline {
 margin-top: 200px!important;
+}
+
+.lds-hourglass {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+.lds-hourglass:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 6px;
+    box-sizing: border-box;
+    border: 26px solid #e27513;
+    border-color: #e27513 transparent #e27513 transparent;
+    animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+    0% {
+        transform: rotate(0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+        transform: rotate(900deg);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+        transform: rotate(1800deg);
+    }
 }

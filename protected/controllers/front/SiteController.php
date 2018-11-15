@@ -23,16 +23,25 @@ class SiteController extends Controller
     }
 
     public function actionSign(){
+        if (!Yii::app()->user->isGuest){
+            $this->redirect(array('site/profile'));
+        }
         $this->pageTitle="Login - Register";
         $this->render('sign');
     }
 
     public function actionSearch(){
+        if (Yii::app()->user->isGuest){
+            $this->redirect(array('site/index'));
+        }
         $this->pageTitle= "Search for help";
         $this->render('search' );
     }
 
     public function actionProfile(){
+        if (Yii::app()->user->isGuest){
+            $this->redirect(array('site/index'));
+        }
         $this->pageTitle="My Profile";
         $this->render('profile');
     }

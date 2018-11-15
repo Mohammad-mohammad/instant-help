@@ -12,35 +12,21 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="">
+                    <form id="add-competence-form">
                         <h4>Choose a competence:</h4>
                         <div class="form-group">
-                            <select class="form-control">
-                                <option value="competence1">Competence1</option>
-                                <option value="competence2">Competence2</option>
-                                <option value="competence3">Competence3</option>
-                                <option value="competence4">Competence4</option>
+                            <select class="form-control" id="available-competences">
                             </select>
                         </div>
 
-                        <input type="submit" class="btn btn-primary" value="Save Changes">
+                        <input type="submit" id="add-competence-btn" class="btn btn-primary" value="Save Changes">
                     </form>
                 </div>
 
             </div>
             <br/>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="alert alert-info">
-                        <button class="close" type="button" data-dismiss="alert"><span aria-hidden="true">&times;</span>
-                        </button>
-                        <p class="text-small">Competence1</p>
-                    </div>
-                    <div class="alert alert-info">
-                        <button class="close" type="button" data-dismiss="alert"><span aria-hidden="true">&times;</span>
-                        </button>
-                        <p class="text-small">Competence2</p>
-                    </div>
+                <div class="col-md-12" id="competences-list">
                 </div>
             </div>
         </div>

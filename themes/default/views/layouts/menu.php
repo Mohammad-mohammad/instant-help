@@ -11,8 +11,10 @@ function is_current($controlle,$action=null){
 <div class="nav">
     <ul class="slimmenu" id="slimmenu">
         <li class="active"><a href="<?php echo Yii::app()->createUrl("site/index"); ?>">Home</a></li>
+        <?php if(!Yii::app()->user->isGuest){ ?>
         <li><a href="<?php echo Yii::app()->createUrl("site/search"); ?>">Get Help</a></li>
         <li><a href="<?php echo Yii::app()->createUrl("site/profile"); ?>">My Profile</a></li>
+        <?php } ?>
         <li><a href="<?php echo Yii::app()->createUrl("site/contact"); ?>">Contact Us</a></li>
         <li><a href="<?php echo Yii::app()->createUrl("site/about"); ?>">About Us</a></li>
         <li><a href="<?php echo Yii::app()->createUrl("site/policy"); ?>">Privacy Policy</a></li>
