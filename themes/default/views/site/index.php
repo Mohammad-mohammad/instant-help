@@ -11,10 +11,10 @@ $p=Yii::app()->theme->baseUrl.'/assets'.$temp;
                     <div class="tagline visible-lg" id="tagline"><span>Get help in </span>
                         <ul>
                             <li class="active">IT</li>
-                            <li>Medicin</li>
+                            
                             <li>Architecture</li>
-                            <li>XXX</li>
-                            <li>YYY</li>
+                            <li>Data Science</li>
+                            <li>AI</li>
                         </ul>
                     </div>
                 </div>
@@ -43,22 +43,23 @@ $p=Yii::app()->theme->baseUrl.'/assets'.$temp;
             <div class="col-md-4">
                 <div class="thumb">
                     <header class="thumb-header">
-                        <i class="fa fa-thumbs-o-up box-icon-border round box-icon-white box-icon-big"></i>
+                        <i class="fa fa-clock-o box-icon-border round box-icon-white box-icon-big"></i>
                     </header>
                     <div class="thumb-caption">
-                        <h4 class="thumb-title">Best Travel Agent</h4>
-                        <p class="thumb-desc">Eleifend tortor himenaeos mollis facilisis ligula sed himenaeos massa vivamus nulla posuere posuere</p>
+                        <h4 class="thumb-title">Instant</h4>
+                        <p class="thumb-desc">Instantly connect you with people, by making a video or sound call with already logged in people and experts</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="thumb">
                     <header class="thumb-header">
-                        <i class="fa fa-send box-icon-border round box-icon-white box-icon-big"></i>
+                        <i class="fa fa-lightbulb-o box-icon-border round box-icon-white box-icon-big"></i>
                     </header>
                     <div class="thumb-caption">
-                        <h4 class="thumb-title">Best Destinations</h4>
-                        <p class="thumb-desc">Lectus ipsum eu elementum fames et fames vehicula montes sapien malesuada dictum nullam</p>
+                        <h4 class="thumb-title">Simple</h4>
+                        <p class="thumb-desc">Easy to search for help,
+                                              Resolve most issues in a very short time
                     </div>
                 </div>
             </div>
@@ -68,9 +69,8 @@ $p=Yii::app()->theme->baseUrl.'/assets'.$temp;
                         <i class="fa fa-dollar box-icon-border round box-icon-white box-icon-big"></i>
                     </header>
                     <div class="thumb-caption">
-                        <h4 class="thumb-title">Best Price Guarantee</h4>
-                        <p class="thumb-desc">Auctor bibendum risus mauris porta ridiculus bibendum placerat rhoncus sagittis varius condimentum
-                            tempor
+                        <h4 class="thumb-title">Affordable</h4>
+                        <p class="thumb-desc">All the help you need for a fractional cost or even Free.
                         </p>
                     </div>
                 </div>

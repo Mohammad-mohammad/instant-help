@@ -1877,6 +1877,11 @@ body {
   height: 700px;
   position: relative;
   overflow: hidden;
+  background-image: url("../img/home/home-slider1.jpeg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 @media (max-width:992px) {
   .top-area,

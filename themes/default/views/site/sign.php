@@ -8,9 +8,19 @@
 <div class="container">
     <div class="row" data-gutter="60">
         <div class="col-md-4">
-            <h3>Welcome to Instant Help</h3>
-            <p>Euismod nunc porta magna elementum penatibus amet gravida sit ligula odio id nunc proin sem augue quis posuere interdum in sapien congue rutrum scelerisque sociosqu cubilia ridiculus et luctus mollis</p>
-            <p>Praesent est semper massa lobortis quisque lectus ridiculus hac eget</p>
+
+            <h3>Become an Expert</h3>
+            <p>Make Money Helping People Over the world</p>
+            <p></p>
+            <h3>Why to join Instan-Help</h3>
+            <ul>
+                <li>Earn $$$ for every call you take **</li>
+                <li> Set your own schedule,by
+                    Working from anywhere, anytime</li>
+                <li>Share your expertise,and
+                    Use your professional knowledge to help people </li>
+            </ul>
+
         </div>
         <div class="col-md-4">
             <h3>Login</h3>
