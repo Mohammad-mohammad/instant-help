@@ -262,7 +262,7 @@ class ApiController extends Controller
 
         $criteria->select='t.id, t.fname, t.lname, t.email, t.photo, clientType';
 
-        $criteria->addCondition('id!='.Yii::app()->user->id);
+        $criteria->addCondition('t.id!='.Yii::app()->user->id);
 
         (isset($_GET['city'])&&$_GET['city']!=="undefined"&&$_GET['city']!=="")?
             $criteria->addSearchCondition('city', $_GET['city']):'';
