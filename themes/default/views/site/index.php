@@ -11,7 +11,7 @@ $p=Yii::app()->theme->baseUrl.'/assets'.$temp;
                     <div class="tagline visible-lg" id="tagline"><span>Get help in </span>
                         <ul>
                             <li class="active">IT</li>
-                            
+
                             <li>Architecture</li>
                             <li>Data Science</li>
                             <li>AI</li>
